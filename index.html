@@ -7,14 +7,13 @@
 <body>
 <h1>A drop down menu with countries to select</h1>
 <p> Select which country you want to teleport to</p>
-<label for="country">country:</label>
 
-<select id="countrySelect">
-    <!-- <option value="1">1234</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-    <option value="4">4</option> -->
-</select>
+<label for="country">country:</label>
+<select id="countrySelect" onchange="callStatesApi()"></select>
+
+
+<label for="states">states:</label>
+<select id="stateSelect"></select>
 
 
 </body>

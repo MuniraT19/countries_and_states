@@ -17,8 +17,26 @@ window.onload = function(){
         opt.value=countries[i].code;
         opt.text=countries[i].name;
         countrySelect.add(opt);
-
     }
-
-    console.log(countrySelect);
 };
+
+function callStatesApi() {
+    let states = [];
+    let countrySelect = document.getElementById("countrySelect");
+    let selectedCountryCode = countrySelect.value;
+    let apiURL = "https://xc-countries-api.fly.dev/api/countries/" + selectedCountryCode + "/states/";
+    states = httpGet(apiURL);
+    console.log(states);
+    generateStatesSelector(states);
+};
+
+function generateStatesSelector(stateList) {
+    let stateSelect = document.getElementById("stateSelect");
+    for (i=0; i<stateList.length; i++){ 
+        console.log(stateList[i]);
+        let opt = document.createElement("option");
+        opt.value=stateList[i].code;
+        opt.text=stateList[i].name;
+        stateSelect.add(opt);
+    }
+}
