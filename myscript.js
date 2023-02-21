@@ -2,7 +2,10 @@ function httpGet(theUrl) {
     var xmlHttp = new XMLHttpRequest();
     xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
     xmlHttp.send( null );
-    return JSON.parse(xmlHttp.responseText);
+    response = JSON.parse(xmlHttp.responseText);
+    // adding an empty option to the beginning of the array using "unshift"
+    response.unshift({id: 0, code: "", name: "(nothing selected)"});
+    return response;
 }
 
 let countries = httpGet("https://xc-countries-api.fly.dev/api/countries/");
@@ -11,6 +14,10 @@ console.log(countries);
 
 window.onload = function(){
     let countrySelect = document.getElementById("countrySelect");
+    // remove previous options
+    for (i=countrySelect.options.length-1; i>=0; i--) {
+        countrySelect.remove(i);
+    }
     for (i=0; i<countries.length; i++){ 
         console.log(countries[i]);
         let opt = document.createElement("option");
@@ -32,6 +39,10 @@ function callStatesApi() {
 
 function generateStatesSelector(stateList) {
     let stateSelect = document.getElementById("stateSelect");
+    // remove previous options
+    for (i=stateSelect.options.length-1; i>=0; i--) {
+        stateSelect.remove(i);
+    }
     for (i=0; i<stateList.length; i++){ 
         console.log(stateList[i]);
         let opt = document.createElement("option");
