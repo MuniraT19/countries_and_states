@@ -1,20 +1,28 @@
 <html>
+
 <head>
     <title>Onboarding task</title>
     <script src="myscript.js"></script>
 </head>
 
 <body>
-<h1>A drop down menu with countries to select</h1>
-<p> Select which country you want to teleport to</p>
+    <h1>A drop down menu with countries to select</h1>
+    <p> Select which country you want to teleport to</p>
 
-<label for="country">country:</label>
-<select id="countrySelect" onchange="callStatesApi()"></select>
-
-
-<label for="states">states:</label>
-<select id="stateSelect"></select>
+    <label for="country">country:</label>
+    <select id="countrySelect" onchange="callStatesApi()"></select>
 
 
-</body>
+    <label for="states">states:</label>
+    <select id="stateSelect"></select>
+
+    <h1>Add a country that's not listed here</h1>
+
+    <label>Country</label>
+    <input type="text" id="countryInput" name="country"><br>
+    <label>Country Code </label>
+    <input type="text" id="countryCodeInput" name="countryCode"><br><br>
+    <button type="submit" onclick="onSubmit(event)"> Submit</button>
+
+
 </html>
