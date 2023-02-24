@@ -8,7 +8,7 @@ function httpGet(theUrl) {
         })
         .then(data => {
             // adding an empty option to the beginning of the array using "unshift"
-            data.unshift({ id: 0, code: "", name: "(nothing selected)" });
+            data.unshift({ id: 0, code: "", name: "(None selected)" });
             data = sortByName(data);
             return data;
         })
