@@ -24,16 +24,22 @@ httpGet('https://xc-countries-api.fly.dev/api/countries/')
         countries = data;
         console.log(countries);
         let countrySelect = document.getElementById('countrySelect');
+        let countrySelect2 = document.getElementById('countrySelect2');
         // remove previous options
         for (i = countrySelect.options.length - 1; i >= 0; i--) {
             countrySelect.remove(i);
         }
         for (i = 0; i < countries.length; i++) {
-            console.log(countries[i]);
+            // console.log(countries[i]);
             let opt = document.createElement('option');
             opt.value = countries[i].code;
             opt.text = countries[i].name;
             countrySelect.add(opt);
+            
+            let opt2 = document.createElement('option');
+            opt2.value = countries[i].id;
+            opt2.text = countries[i].name;
+            countrySelect2.add(opt2);
         }
     })
     .catch(error => {
@@ -64,7 +70,7 @@ function generateStatesSelector(stateList) {
         stateSelect.remove(i);
     }
     for (i = 0; i < stateList.length; i++) {
-        console.log(stateList[i]);
+        // console.log(stateList[i]);
         let opt = document.createElement('option');
         opt.value = stateList[i].code;
         opt.text = stateList[i].name;
@@ -99,6 +105,31 @@ function onSubmit(event) {
         name: countryInput.value
     };
     var url = "https://xc-countries-api.fly.dev/api/countries/";
+    console.log(payload);
+
+    fetch(url, {
+        method: "POST",
+        body: JSON.stringify(payload),
+        headers: {
+            "Content-type": "application/json; charset=UTF-8"
+        }
+    })
+    .then((response) => response.json())
+    .then((json) => console.log(json));
+
+}
+
+function onSubmitState(event) {
+    var stateInput = document.getElementById("stateInput");
+    var stateCodeInput = document.getElementById("stateCodeInput");
+    var countrySelec2 = document.getElementById("countrySelect2");
+
+    var payload = {
+        code: stateCodeInput.value,
+        name: stateInput.value,
+        countryId: countrySelect2.value
+    };
+    var url = "https://xc-countries-api.fly.dev/api/states/";
     console.log(payload);
 
     fetch(url, {
