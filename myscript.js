@@ -122,7 +122,7 @@ function onSubmit(event) {
 function onSubmitState(event) {
     var stateInput = document.getElementById("stateInput");
     var stateCodeInput = document.getElementById("stateCodeInput");
-    var countrySelec2 = document.getElementById("countrySelect2");
+    var countrySelect2 = document.getElementById("countrySelect2");
 
     var payload = {
         code: stateCodeInput.value,
