@@ -97,6 +97,7 @@ function sortByName(resObj) {
 
 
 function onSubmit(event) {
+    
     var countryInput = document.getElementById("countryInput");
     var countryCodeInput = document.getElementById("countryCodeInput");
 
